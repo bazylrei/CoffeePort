@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21CB08CC1D7A013600610FCD /* BurgerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08CB1D7A013600610FCD /* BurgerAPI.swift */; };
 		61B60ED4A4EE962364193D19 /* Pods_CoffeePort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464A36D47AD1FE3987D4706C /* Pods_CoffeePort.framework */; };
 		D7B76DCD4FB3E62E240DF4C6 /* Pods_CoffeePortTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A3DD5C4FE9371D61A5DB2A /* Pods_CoffeePortTests.framework */; };
 		F8B384131D79D9340057294C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B384121D79D9340057294C /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1FA8DACC9DB81D24F66A4B63 /* Pods-CoffeePort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePort.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePort/Pods-CoffeePort.release.xcconfig"; sourceTree = "<group>"; };
+		21CB08CB1D7A013600610FCD /* BurgerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurgerAPI.swift; sourceTree = "<group>"; };
 		402AECB04A497830A76AC428 /* Pods-CoffeePortTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePortTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePortTests/Pods-CoffeePortTests.debug.xcconfig"; sourceTree = "<group>"; };
 		464A36D47AD1FE3987D4706C /* Pods_CoffeePort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeePort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A569E31F5851078DC371AA /* Pods-CoffeePort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePort/Pods-CoffeePort.debug.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21CB08CA1D7A00B700610FCD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				21CB08CB1D7A013600610FCD /* BurgerAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		5B1BE54333F01758A25370E1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		F8B384111D79D9340057294C /* CoffeePort */ = {
 			isa = PBXGroup;
 			children = (
+				21CB08CA1D7A00B700610FCD /* API */,
 				F8B384121D79D9340057294C /* AppDelegate.swift */,
 				F8B384141D79D9340057294C /* ViewController.swift */,
 				F8B384161D79D9340057294C /* Main.storyboard */,
@@ -334,6 +345,7 @@
 				F8B384151D79D9340057294C /* ViewController.swift in Sources */,
 				F8B384131D79D9340057294C /* AppDelegate.swift in Sources */,
 				F8B3841B1D79D9340057294C /* CoffeePort.xcdatamodeld in Sources */,
+				21CB08CC1D7A013600610FCD /* BurgerAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
