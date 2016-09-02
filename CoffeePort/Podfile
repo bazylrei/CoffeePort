@@ -3,7 +3,7 @@
 
 target 'CoffeePort' do
     pod 'Alamofire'
-    pod "MagicalRecord"
+    pod 'MagicalRecord', '~> 2.3.0'
     pod 'SDWebImage'
 use_frameworks!
 

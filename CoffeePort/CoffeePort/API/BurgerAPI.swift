@@ -8,21 +8,19 @@
 
 import UIKit
 import Alamofire
+import MagicalRecord
 
 class BurgerAPI: NSObject {
   
-  class func getBurgersRequest() {
+  class func getBurgersRequest(completion: (result: [AnyObject]) -> Void) {
     Alamofire.request(.GET, "http://coffeeport.herokuapp.com/burgers/", parameters: ["foo": "bar"])
       .responseJSON { response in
         
-        guard let JSON = response.result.value else {
-          return
-        }
+        guard let JSON = response.result.value else { return }
         
         let burgers = JSON.objectForKey("burgers")
         if let burgers = burgers {
-          let burgerObjects = Burger.MR_importFromArray(burgers as! [AnyObject])
-          print(burgerObjects)
+          completion(result: burgers as! [AnyObject])
         }
     }
   }

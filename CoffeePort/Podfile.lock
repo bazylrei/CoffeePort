@@ -7,7 +7,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - MagicalRecord
+  - MagicalRecord (~> 2.3.0)
   - SDWebImage
 
 SPEC CHECKSUMS:
@@ -15,6 +15,6 @@ SPEC CHECKSUMS:
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
 
-PODFILE CHECKSUM: 7b87ecbc2ed9d205263994df4fd4aed55ec82b39
+PODFILE CHECKSUM: 9c99201dbb80a4177f1e40b34425920f4e0b80ed
 
 COCOAPODS: 1.0.1
