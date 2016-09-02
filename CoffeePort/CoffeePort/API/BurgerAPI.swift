@@ -14,8 +14,15 @@ class BurgerAPI: NSObject {
     class func getBurgersRequest() {
         Alamofire.request(.GET, "http://coffeeport.herokuapp.com/burgers/", parameters: ["foo": "bar"])
             .responseJSON { response in
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+                
+                guard let JSON = response.result.value else {
+                    return
+                }
+                
+                let burgers = JSON.objectForKey("burgers")
+                if let burgers = burgers {
+                    let burgerObjects = Burger.MR_importFromArray(burgers as! [AnyObject])
+                    print(burgerObjects)
                 }
         }
     }

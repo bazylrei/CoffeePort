@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21CB08CC1D7A013600610FCD /* BurgerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08CB1D7A013600610FCD /* BurgerAPI.swift */; };
+		21CB08D51D7A07B500610FCD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08D31D7A07B500610FCD /* Model.xcdatamodeld */; };
+		21CB08D71D7A07CB00610FCD /* BurgerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */; };
+		21CB08E11D7A08D000610FCD /* Burger+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */; };
+		21CB08E21D7A08D000610FCD /* Burger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08E01D7A08D000610FCD /* Burger.swift */; };
 		61B60ED4A4EE962364193D19 /* Pods_CoffeePort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464A36D47AD1FE3987D4706C /* Pods_CoffeePort.framework */; };
 		D7B76DCD4FB3E62E240DF4C6 /* Pods_CoffeePortTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A3DD5C4FE9371D61A5DB2A /* Pods_CoffeePortTests.framework */; };
 		F8B384131D79D9340057294C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B384121D79D9340057294C /* AppDelegate.swift */; };
 		F8B384151D79D9340057294C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B384141D79D9340057294C /* ViewController.swift */; };
 		F8B384181D79D9340057294C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B384161D79D9340057294C /* Main.storyboard */; };
-		F8B3841B1D79D9340057294C /* CoffeePort.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8B384191D79D9340057294C /* CoffeePort.xcdatamodeld */; };
 		F8B3841D1D79D9340057294C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8B3841C1D79D9340057294C /* Assets.xcassets */; };
 		F8B384201D79D9340057294C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B3841E1D79D9340057294C /* LaunchScreen.storyboard */; };
 		F8B3842B1D79D9340057294C /* CoffeePortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B3842A1D79D9340057294C /* CoffeePortTests.swift */; };
@@ -31,7 +33,10 @@
 
 /* Begin PBXFileReference section */
 		1FA8DACC9DB81D24F66A4B63 /* Pods-CoffeePort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePort.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePort/Pods-CoffeePort.release.xcconfig"; sourceTree = "<group>"; };
-		21CB08CB1D7A013600610FCD /* BurgerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurgerAPI.swift; sourceTree = "<group>"; };
+		21CB08D41D7A07B500610FCD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BurgerAPI.swift; path = API/BurgerAPI.swift; sourceTree = "<group>"; };
+		21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Burger+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		21CB08E01D7A08D000610FCD /* Burger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Burger.swift; sourceTree = "<group>"; };
 		402AECB04A497830A76AC428 /* Pods-CoffeePortTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePortTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePortTests/Pods-CoffeePortTests.debug.xcconfig"; sourceTree = "<group>"; };
 		464A36D47AD1FE3987D4706C /* Pods_CoffeePort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeePort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A569E31F5851078DC371AA /* Pods-CoffeePort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePort/Pods-CoffeePort.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,9 +78,19 @@
 		21CB08CA1D7A00B700610FCD /* API */ = {
 			isa = PBXGroup;
 			children = (
-				21CB08CB1D7A013600610FCD /* BurgerAPI.swift */,
+				21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		21CB08CD1D7A06B500610FCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21CB08D31D7A07B500610FCD /* Model.xcdatamodeld */,
+				21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */,
+				21CB08E01D7A08D000610FCD /* Burger.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5B1BE54333F01758A25370E1 /* Pods */ = {
@@ -121,6 +136,7 @@
 		F8B384111D79D9340057294C /* CoffeePort */ = {
 			isa = PBXGroup;
 			children = (
+				21CB08CD1D7A06B500610FCD /* Model */,
 				21CB08CA1D7A00B700610FCD /* API */,
 				F8B384121D79D9340057294C /* AppDelegate.swift */,
 				F8B384141D79D9340057294C /* ViewController.swift */,
@@ -342,10 +358,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21CB08E21D7A08D000610FCD /* Burger.swift in Sources */,
+				21CB08E11D7A08D000610FCD /* Burger+CoreDataProperties.swift in Sources */,
 				F8B384151D79D9340057294C /* ViewController.swift in Sources */,
+				21CB08D71D7A07CB00610FCD /* BurgerAPI.swift in Sources */,
 				F8B384131D79D9340057294C /* AppDelegate.swift in Sources */,
-				F8B3841B1D79D9340057294C /* CoffeePort.xcdatamodeld in Sources */,
-				21CB08CC1D7A013600610FCD /* BurgerAPI.swift in Sources */,
+				21CB08D51D7A07B500610FCD /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,10 +495,12 @@
 			baseConfigurationReference = 61A569E31F5851078DC371AA /* Pods-CoffeePort.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoffeePort/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazylrei.CoffeePort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -489,6 +509,7 @@
 			baseConfigurationReference = 1FA8DACC9DB81D24F66A4B63 /* Pods-CoffeePort.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoffeePort/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazylrei.CoffeePort;
@@ -555,6 +576,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		21CB08D31D7A07B500610FCD /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				21CB08D41D7A07B500610FCD /* Model.xcdatamodel */,
+			);
+			currentVersion = 21CB08D41D7A07B500610FCD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		F8B384191D79D9340057294C /* CoffeePort.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
