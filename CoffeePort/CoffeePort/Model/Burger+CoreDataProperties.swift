@@ -13,13 +13,13 @@ import Foundation
 import CoreData
 
 extension Burger {
-
-    @NSManaged var bitcoin: NSNumber?
-    @NSManaged var id: NSNumber?
-    @NSManaged var image: String?
-    @NSManaged var name: String?
-    @NSManaged var notes: String?
-    @NSManaged var promoted: NSNumber?
-    @NSManaged var vegetarian: NSNumber?
-
+  
+  @NSManaged var bitcoin: NSNumber?
+  @NSManaged var id: NSNumber?
+  @NSManaged var image: String?
+  @NSManaged var name: String?
+  @NSManaged var notes: String?
+  @NSManaged var promoted: NSNumber?
+  @NSManaged var vegetarian: NSNumber?
+  
 }

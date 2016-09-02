@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        BurgerAPI.getBurgersRequest()
-        BurgerAPI.postBurgerRequest("2", price: NSNumber(int: 750))
-    }
-
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    BurgerAPI.getBurgersRequest()
+    BurgerAPI.postBurgerRequest("2", price: NSNumber(int: 750))
+  }
+  
 }
 
