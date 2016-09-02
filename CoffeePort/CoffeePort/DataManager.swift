@@ -17,6 +17,9 @@ class DataManager: NSObject {
     }
     BurgerAPI.getBurgersRequest { (result) in
       MagicalRecord.saveWithBlock({ (localContext) in
+        for burger in Burger.MR_findAll() {
+          burger.MR_deleteEntityInContext(localContext)
+        }
         Burger.MR_importFromArray(result, inContext: localContext)
       })
     }
