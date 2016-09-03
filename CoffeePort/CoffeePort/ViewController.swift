@@ -32,8 +32,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
   
   func reloadData() {
-    burgers = Burger.MR_findAll() as! [Burger]!
     dispatch_async(dispatch_get_main_queue(),{
+      self.burgers = Burger.MR_findAll() as! [Burger]!
       self.tableView.reloadData()
     })
   }
@@ -49,7 +49,7 @@ extension ViewController {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(Constants.burgerCellIdentifier, forIndexPath: indexPath) as! NonPromotedBurgerCell
-    cell.labelBurgerName.text = burgers[indexPath.row].name
+    cell.setupCell(burgers[indexPath.row])
     return cell
   }
   

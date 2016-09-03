@@ -11,4 +11,5 @@ import UIKit
 struct Constants {
   static let dataDownloadedNotification = "coffeePort.dataDownloadedNotification"
   static let burgerCellIdentifier = "BurgerCell"
+  static let baseURL = "http://coffeeport.herokuapp.com"
 }

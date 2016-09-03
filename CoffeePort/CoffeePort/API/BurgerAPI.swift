@@ -13,7 +13,7 @@ import MagicalRecord
 class BurgerAPI: NSObject {
   
   class func getBurgersRequest(completion: (result: [AnyObject]) -> Void) {
-    Alamofire.request(.GET, "http://coffeeport.herokuapp.com/burgers/", parameters: ["foo": "bar"])
+    Alamofire.request(.GET, Constants.baseURL + "/burgers/", parameters: ["foo": "bar"])
       .responseJSON { response in
         
         guard let JSON = response.result.value else { return }
@@ -31,7 +31,7 @@ class BurgerAPI: NSObject {
       "bitcoin": price
     ]
     
-    Alamofire.request(.POST, "http://coffeeport.herokuapp.com/burgers/", parameters: parameters)
+    Alamofire.request(.POST, Constants.baseURL + "/burgers/", parameters: parameters)
       .responseJSON { response in
         if let JSON = response.result.value {
           print("JSON: \(JSON)")

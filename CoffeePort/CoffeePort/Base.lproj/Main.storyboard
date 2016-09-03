@@ -86,7 +86,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buttonBuy" destination="2ND-VX-fdc" id="a2D-v5-iHf"/>
+                                            <outlet property="buttonBuy" destination="lc5-dd-JyA" id="ouw-kv-2en"/>
                                             <outlet property="labelBurgerName" destination="pot-is-eE6" id="Aa4-72-pLn"/>
                                             <outlet property="labelVegetarian" destination="6f7-o3-Pf4" id="6yi-uD-uhb"/>
                                             <outlet property="thumbnail" destination="VTF-Pj-NbM" id="BEE-1j-DWM"/>
