@@ -12,8 +12,8 @@ import MagicalRecord
 class DataManager: NSObject {
   class func downloadData() {
     let arr = Burger.MR_findAll() as! [Burger]
-    for burger in arr {
-      print(burger.name)
+    if arr.count > 0 {
+      NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
     }
     BurgerAPI.getBurgersRequest { (result) in
       MagicalRecord.saveWithBlock({ (localContext) in
@@ -21,6 +21,7 @@ class DataManager: NSObject {
           burger.MR_deleteEntityInContext(localContext)
         }
         Burger.MR_importFromArray(result, inContext: localContext)
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
       })
     }
     

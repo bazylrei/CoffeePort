@@ -25,6 +25,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="fXC-cI-Odp"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fXC-cI-Odp"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FRg-Hm-CBK">
                                 <rect key="frame" x="0.0" y="148" width="600" height="452"/>
@@ -39,6 +44,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-Pj-NbM">
                                                     <rect key="frame" x="8" y="0.0" width="92" height="92"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="VTF-Pj-NbM" secondAttribute="height" multiplier="1:1" id="hkH-Kk-FH8"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6f7-o3-Pf4">
                                                     <rect key="frame" x="108" y="65" width="63" height="20"/>
@@ -69,7 +77,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="6f7-o3-Pf4" secondAttribute="bottom" constant="7" id="5Aq-1M-GFp"/>
                                                 <constraint firstItem="VTF-Pj-NbM" firstAttribute="top" secondItem="84x-4D-Swc" secondAttribute="topMargin" constant="-8" id="7S1-tr-2gM"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="VTF-Pj-NbM" secondAttribute="bottom" id="F4C-Mq-92b"/>
-                                                <constraint firstItem="VTF-Pj-NbM" firstAttribute="width" secondItem="84x-4D-Swc" secondAttribute="height" multiplier="23:25" id="I7s-iz-h19"/>
                                                 <constraint firstAttribute="topMargin" secondItem="pot-is-eE6" secondAttribute="top" id="JmV-BG-yDM"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pot-is-eE6" secondAttribute="trailing" constant="114" id="aAE-rm-rCG"/>
                                                 <constraint firstItem="pot-is-eE6" firstAttribute="leading" secondItem="VTF-Pj-NbM" secondAttribute="trailing" constant="8" id="fgS-Vg-28K"/>
@@ -86,6 +93,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="jwb-G8-GkG"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZnS-FC-H3s"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -100,6 +111,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FRg-Hm-CBK" secondAttribute="bottom" id="nA0-H6-kh2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="FRg-Hm-CBK" id="Zdz-vx-DWy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

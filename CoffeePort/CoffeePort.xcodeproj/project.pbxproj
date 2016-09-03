@@ -10,6 +10,7 @@
 		21114E331D7A482E00A4BF22 /* PromotedBurgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21114E321D7A482E00A4BF22 /* PromotedBurgerView.swift */; };
 		21114E351D7A485300A4BF22 /* PromotedBurgerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21114E341D7A485300A4BF22 /* PromotedBurgerView.xib */; };
 		21114E371D7A495D00A4BF22 /* NonPromotedBurgerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21114E361D7A495D00A4BF22 /* NonPromotedBurgerCell.swift */; };
+		21114E3A1D7A4C8500A4BF22 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21114E391D7A4C8500A4BF22 /* Constants.swift */; };
 		21CB08D51D7A07B500610FCD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08D31D7A07B500610FCD /* Model.xcdatamodeld */; };
 		21CB08D71D7A07CB00610FCD /* BurgerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */; };
 		21CB08E11D7A08D000610FCD /* Burger+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */; };
@@ -40,6 +41,7 @@
 		21114E321D7A482E00A4BF22 /* PromotedBurgerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotedBurgerView.swift; sourceTree = "<group>"; };
 		21114E341D7A485300A4BF22 /* PromotedBurgerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromotedBurgerView.xib; sourceTree = "<group>"; };
 		21114E361D7A495D00A4BF22 /* NonPromotedBurgerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonPromotedBurgerCell.swift; sourceTree = "<group>"; };
+		21114E391D7A4C8500A4BF22 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		21CB08D41D7A07B500610FCD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BurgerAPI.swift; path = API/BurgerAPI.swift; sourceTree = "<group>"; };
 		21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Burger+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 				21114E361D7A495D00A4BF22 /* NonPromotedBurgerCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		21114E381D7A4C6200A4BF22 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				21114E391D7A4C8500A4BF22 /* Constants.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		21CB08CA1D7A00B700610FCD /* API */ = {
@@ -155,6 +165,7 @@
 		F8B384111D79D9340057294C /* CoffeePort */ = {
 			isa = PBXGroup;
 			children = (
+				21114E381D7A4C6200A4BF22 /* Util */,
 				21114E311D7A47E800A4BF22 /* Views */,
 				21CB08CD1D7A06B500610FCD /* Model */,
 				21CB08CA1D7A00B700610FCD /* API */,
@@ -384,6 +395,7 @@
 				F8B384151D79D9340057294C /* ViewController.swift in Sources */,
 				21114E371D7A495D00A4BF22 /* NonPromotedBurgerCell.swift in Sources */,
 				21CB08E41D7A0C2700610FCD /* DataManager.swift in Sources */,
+				21114E3A1D7A4C8500A4BF22 /* Constants.swift in Sources */,
 				21CB08D71D7A07CB00610FCD /* BurgerAPI.swift in Sources */,
 				F8B384131D79D9340057294C /* AppDelegate.swift in Sources */,
 				21CB08D51D7A07B500610FCD /* Model.xcdatamodeld in Sources */,
