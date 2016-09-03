@@ -12,4 +12,7 @@ struct Constants {
   static let dataDownloadedNotification = "coffeePort.dataDownloadedNotification"
   static let burgerCellIdentifier = "BurgerCell"
   static let baseURL = "http://coffeeport.herokuapp.com"
+  struct Colors {
+    static let vegetarianGreen = UIColor.init(red: 50.0/255.0, green: 131.0/255.0, blue: 50.0/255.0, alpha: 1)
+  }
 }
