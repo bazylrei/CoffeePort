@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21114E331D7A482E00A4BF22 /* PromotedBurgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21114E321D7A482E00A4BF22 /* PromotedBurgerView.swift */; };
+		21114E351D7A485300A4BF22 /* PromotedBurgerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21114E341D7A485300A4BF22 /* PromotedBurgerView.xib */; };
+		21114E371D7A495D00A4BF22 /* NonPromotedBurgerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21114E361D7A495D00A4BF22 /* NonPromotedBurgerCell.swift */; };
 		21CB08D51D7A07B500610FCD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08D31D7A07B500610FCD /* Model.xcdatamodeld */; };
 		21CB08D71D7A07CB00610FCD /* BurgerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */; };
 		21CB08E11D7A08D000610FCD /* Burger+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		1FA8DACC9DB81D24F66A4B63 /* Pods-CoffeePort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePort.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePort/Pods-CoffeePort.release.xcconfig"; sourceTree = "<group>"; };
+		21114E321D7A482E00A4BF22 /* PromotedBurgerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotedBurgerView.swift; sourceTree = "<group>"; };
+		21114E341D7A485300A4BF22 /* PromotedBurgerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromotedBurgerView.xib; sourceTree = "<group>"; };
+		21114E361D7A495D00A4BF22 /* NonPromotedBurgerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonPromotedBurgerCell.swift; sourceTree = "<group>"; };
 		21CB08D41D7A07B500610FCD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		21CB08D61D7A07CB00610FCD /* BurgerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BurgerAPI.swift; path = API/BurgerAPI.swift; sourceTree = "<group>"; };
 		21CB08DF1D7A08D000610FCD /* Burger+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Burger+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21114E311D7A47E800A4BF22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21114E321D7A482E00A4BF22 /* PromotedBurgerView.swift */,
+				21114E341D7A485300A4BF22 /* PromotedBurgerView.xib */,
+				21114E361D7A495D00A4BF22 /* NonPromotedBurgerCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		21CB08CA1D7A00B700610FCD /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +155,7 @@
 		F8B384111D79D9340057294C /* CoffeePort */ = {
 			isa = PBXGroup;
 			children = (
+				21114E311D7A47E800A4BF22 /* Views */,
 				21CB08CD1D7A06B500610FCD /* Model */,
 				21CB08CA1D7A00B700610FCD /* API */,
 				F8B384121D79D9340057294C /* AppDelegate.swift */,
@@ -251,6 +268,7 @@
 				F8B384201D79D9340057294C /* LaunchScreen.storyboard in Resources */,
 				F8B3841D1D79D9340057294C /* Assets.xcassets in Resources */,
 				F8B384181D79D9340057294C /* Main.storyboard in Resources */,
+				21114E351D7A485300A4BF22 /* PromotedBurgerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,10 +382,12 @@
 				21CB08E21D7A08D000610FCD /* Burger.swift in Sources */,
 				21CB08E11D7A08D000610FCD /* Burger+CoreDataProperties.swift in Sources */,
 				F8B384151D79D9340057294C /* ViewController.swift in Sources */,
+				21114E371D7A495D00A4BF22 /* NonPromotedBurgerCell.swift in Sources */,
 				21CB08E41D7A0C2700610FCD /* DataManager.swift in Sources */,
 				21CB08D71D7A07CB00610FCD /* BurgerAPI.swift in Sources */,
 				F8B384131D79D9340057294C /* AppDelegate.swift in Sources */,
 				21CB08D51D7A07B500610FCD /* Model.xcdatamodeld in Sources */,
+				21114E331D7A482E00A4BF22 /* PromotedBurgerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
