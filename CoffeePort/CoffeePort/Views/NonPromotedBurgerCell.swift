@@ -24,14 +24,48 @@ class NonPromotedBurgerCell: UITableViewCell {
     }
   
   func setupCell(burger: Burger) {
-//    burger = burger
+    self.burger = burger
     if let image = burger.image {
       let imageURL = NSURL(string: Constants.baseURL + image)
       thumbnail.sd_setImageWithURL(imageURL)
     }
     labelBurgerName.text = burger.name
-    labelVegetarian.text = burger.vegetarian == NSNumber(bool: true) ? "V" : ""
-    buttonBuy.setTitle(String(burger.bitcoin), forState: .Normal)
+    
+    
+    let vegeterianGreen = UIColor.init(red: 50.0/255.0, green: 131.0/255.0, blue: 50.0/255.0, alpha: 1)
+    labelVegetarian.hidden = burger.vegetarian == NSNumber(bool: false)
+    labelVegetarian.textColor = vegeterianGreen
+    labelVegetarian.layer.borderColor = vegeterianGreen.CGColor
+    labelVegetarian.layer.borderWidth = 3.0
+    labelVegetarian.layer.cornerRadius = labelVegetarian.frame.size.height / 2.0
+    
+    if let bitcoin = burger.bitcoin {
+      buttonBuy.setTitle("฿" + String(bitcoin), forState: .Normal)
+    }
+    buttonBuy.backgroundColor = vegeterianGreen
+    buttonBuy.layer.cornerRadius = 4.0
+    buttonBuy.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    buttonBuy.addTarget(self, action: #selector(didTapBuyButton), forControlEvents: .TouchUpInside)
+    
+  }
+  
+  func didTapBuyButton() {
+    
+    BurgerAPI.postBurgerRequest(burger.id!, price: burger.bitcoin!) { (result) in
+      let alert = UIAlertController(title: result as String, message: nil, preferredStyle: .Alert)
+      let closeAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+      alert.addAction(closeAction)
+      
+      var parentResponder: UIResponder? = self
+      while parentResponder != nil {
+        parentResponder = parentResponder!.nextResponder()
+        if let viewController = parentResponder as? UIViewController {
+          viewController.presentViewController(alert, animated: true) {
+          }
+        }
+      }
+      
+    }
   }
 
 }

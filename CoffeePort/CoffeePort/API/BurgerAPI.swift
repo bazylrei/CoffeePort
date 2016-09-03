@@ -25,7 +25,7 @@ class BurgerAPI: NSObject {
     }
   }
   
-  class func postBurgerRequest(burgerID: String, price: NSNumber) {
+  class func postBurgerRequest(burgerID: NSNumber, price: NSNumber, completion: (result: NSString) -> Void) {
     let parameters = [
       "id": burgerID,
       "bitcoin": price
@@ -35,6 +35,9 @@ class BurgerAPI: NSObject {
       .responseJSON { response in
         if let JSON = response.result.value {
           print("JSON: \(JSON)")
+          if let message = JSON.objectForKey("message") as? NSString {
+            completion(result: message)
+          }
         }
     }
   }

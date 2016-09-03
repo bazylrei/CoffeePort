@@ -50,10 +50,26 @@ extension ViewController {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(Constants.burgerCellIdentifier, forIndexPath: indexPath) as! NonPromotedBurgerCell
     cell.setupCell(burgers[indexPath.row])
+    cell.backgroundColor = UIColor.lightTextColor()//colors[indexPath.row % 2]
     return cell
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
+  }
+}
+
+// MARK: UITableViewDelegate
+
+extension ViewController {
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    let note = burgers[indexPath.row].notes
+    let alert = UIAlertController(title: "Notes", message: note, preferredStyle: .Alert)
+    let closeAction = UIAlertAction(title: "Close", style: .Cancel, handler: nil)
+    alert.addAction(closeAction)
+    self.presentViewController(alert, animated: true) {
+      
+    }
   }
 }
