@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import DGActivityIndicatorView
 
 class NonPromotedBurgerCell: UITableViewCell {
   
@@ -55,22 +56,36 @@ class NonPromotedBurgerCell: UITableViewCell {
   }
   
   func didTapBuyButton() {
+    guard let viewController = self.getPresentingViewController() else { return }
+    
+    let activityIndicator = DGActivityIndicatorView(type: .LineScalePulseOut, tintColor: UIColor.redColor()) // (type: .LineScalePulseOut,
+    activityIndicator.frame = CGRectMake(0, 0, viewController.view.frame.size.width, viewController.view.frame.size.height)
+    activityIndicator.center = viewController.view.center
+    viewController.view.addSubview(activityIndicator)
+    activityIndicator.startAnimating()
     
     BurgerAPI.postBurgerRequest(burger.id!, price: burger.bitcoin!) { (result) in
+      activityIndicator.stopAnimating()
+      activityIndicator.removeFromSuperview()
       let alert = UIAlertController(title: self.burger.name!, message: result as String, preferredStyle: .Alert)
       let closeAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
       alert.addAction(closeAction)
       
-      var parentResponder: UIResponder? = self
-      while parentResponder != nil {
-        parentResponder = parentResponder!.nextResponder()
-        if let viewController = parentResponder as? UIViewController {
-          viewController.presentViewController(alert, animated: true) {
-          }
-        }
-      }
+      viewController.presentViewController(alert, animated: true, completion: nil)
       
     }
   }
+  
+  func getPresentingViewController() -> UIViewController? {
+    var parentResponder: UIResponder? = self
+    while parentResponder != nil {
+      parentResponder = parentResponder!.nextResponder()
+      if let viewController = parentResponder as? UIViewController {
+        return viewController
+      }
+    }
+    return nil
+  }
+  
   
 }

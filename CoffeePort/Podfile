@@ -5,6 +5,7 @@ target 'CoffeePort' do
     pod 'Alamofire'
     pod 'MagicalRecord', '~> 2.3.0'
     pod 'SDWebImage'
+    pod 'DGActivityIndicatorView'
 use_frameworks!
 
 # Pods for CoffeePort

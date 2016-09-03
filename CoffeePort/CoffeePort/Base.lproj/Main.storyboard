@@ -113,6 +113,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="scrollView" destination="187-EF-ncI" id="D3r-cI-INO"/>
                         <outlet property="tableView" destination="FRg-Hm-CBK" id="Zdz-vx-DWy"/>
                     </connections>
                 </viewController>
