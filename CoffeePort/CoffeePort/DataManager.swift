@@ -17,9 +17,17 @@ class DataManager: NSObject {
     }
     BurgerAPI.getBurgersRequest { (result) in
       MagicalRecord.saveWithBlock({ (localContext) in
-        Burger.MR_importFromArray(result, inContext: localContext)
-        NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
+        for burger in Burger.MR_findAll() {
+          burger.MR_deleteInContext(localContext)
+        }
+        }, completion: { (booleanResult, error) in
+          MagicalRecord.saveWithBlock({ (localContext) in
+            Burger.MR_importFromArray(result, inContext: localContext)
+            }, completion: { (booleanResult, error) in
+              NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
+          })
       })
+      
     }
   }
 }

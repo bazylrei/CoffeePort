@@ -39,8 +39,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func reloadData() {
     dispatch_async(dispatch_get_main_queue(),{
       self.hideActivityIndicator()
-      self.nonPromotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(bool: false))) as! [Burger]!
-      self.promotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(bool: true))) as! [Burger]!
+      let allBurgers = Burger.MR_findAll() as! [Burger]
+      print(allBurgers.count)
+      self.nonPromotedBurgers = allBurgers.filter({ (burger) -> Bool in
+        return burger.promoted == NSNumber(bool: false)
+      })
+      self.promotedBurgers = allBurgers.filter({ (burger) -> Bool in
+        return burger.promoted == NSNumber(bool: true)
+      })
+      
+//      self.nonPromotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(int: 0))) as! [Burger]!
+//      self.promotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(int: 1))) as! [Burger]!
       self.setupScrollView()
       self.tableView.reloadData()
     })
@@ -74,11 +83,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func setupScrollView() {
     scrollView.pagingEnabled = true
     scrollView.alwaysBounceVertical = false
-    for i in 0..<nonPromotedBurgers.count {
+    for i in 0..<promotedBurgers.count {
       let xOrigin = CGFloat(i) * scrollView.frame.size.width
       var frame = self.scrollView.bounds
       frame.origin.x = xOrigin
-      let burger = nonPromotedBurgers[i]
+      let burger = promotedBurgers[i]
       let allViewsInXibArray = NSBundle.mainBundle().loadNibNamed("PromotedBurgerView", owner: self, options: nil)
       let burgerView = allViewsInXibArray.first as! PromotedBurgerView
       burgerView.frame = frame
@@ -86,7 +95,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       scrollView.addSubview(burgerView)
     }
     
-    let width = scrollView.frame.size.width * CGFloat(nonPromotedBurgers.count)
+    let width = scrollView.frame.size.width * CGFloat(promotedBurgers.count)
     let height = scrollView.frame.size.height
     scrollView.contentSize = CGSizeMake(width, height)
     
