@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                      selector:#selector(reloadData) ,
                                                      name: Constants.dataDownloadedNotification,
                                                      object: nil)
+    DataManager.downloadData()
   }
   
   override func viewDidDisappear(animated: Bool) {

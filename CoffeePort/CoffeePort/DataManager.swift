@@ -12,9 +12,8 @@ import ReachabilitySwift
 
 class DataManager: NSObject {
   class func downloadData() {
-    defer {
-      NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
-    }
+    
+    
     var reachability: Reachability!
     do {
        reachability = try Reachability.reachabilityForInternetConnection()
@@ -36,13 +35,14 @@ class DataManager: NSObject {
             MagicalRecord.saveWithBlock({ (localContext) in
               Burger.MR_importFromArray(result, inContext: localContext)
               }, completion: { (booleanResult, error) in
-                if error == nil {
-                  NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
-                }
+                NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
             })
         })
         
       }
+    } else {
+      NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
     }
+    
   }
 }
