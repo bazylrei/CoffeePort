@@ -11,38 +11,33 @@ import MagicalRecord
 import ReachabilitySwift
 
 class DataManager: NSObject {
-  class func downloadData() {
-    
-    
+  class func downloadData(completionBlock: (success: Bool, message: String) -> Void) {
     var reachability: Reachability!
     do {
-       reachability = try Reachability.reachabilityForInternetConnection()
-    }  catch {
-      print("error getting reachability")
+      reachability = try Reachability.reachabilityForInternetConnection()
+    } catch {
+      print("Reachability has encountered an error")
     }
-    
-    let arr = Burger.MR_findAll() as! [Burger]
-    if arr.count > 0 {
-      NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
-    }
-    if reachability.isReachable() {
-      BurgerAPI.getBurgersRequest { (result) in
+    if !reachability.isReachable() {
+      completionBlock(success: false, message:"There is no internet connection")
+      return
+    } else {
+      BurgerAPI.getBurgersRequest { (result, error) in
+        if error != nil {
+          completionBlock(success: false, message: "Something went wrong")
+        }
         MagicalRecord.saveWithBlock({ (localContext) in
           for burger in Burger.MR_findAll() {
             burger.MR_deleteInContext(localContext)
           }
-          }, completion: { (booleanResult, error) in
+        }, completion: { (booleanResult, error) in
             MagicalRecord.saveWithBlock({ (localContext) in
               Burger.MR_importFromArray(result, inContext: localContext)
-              }, completion: { (booleanResult, error) in
-                NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
+            }, completion: { (s, error) in
+              completionBlock(success: true, message:"Success")
             })
         })
-        
       }
-    } else {
-      NSNotificationCenter.defaultCenter().postNotificationName(Constants.dataDownloadedNotification, object: nil)
     }
-    
   }
 }

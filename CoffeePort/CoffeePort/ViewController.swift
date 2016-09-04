@@ -8,15 +8,18 @@
 
 import UIKit
 import DGActivityIndicatorView
+import ReachabilitySwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BurgerCellDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var labelNoBurgers: UILabel!
   var promotedBurgers: [Burger]! = []
   var nonPromotedBurgers: [Burger]! = []
   var activityIndicator: DGActivityIndicatorView!
-  
+  let refreshControl =  UIRefreshControl()
+  var reachability: Reachability!
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -25,11 +28,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     super.viewDidAppear(animated)
     self.presentActivityIndicator()
     
-    NSNotificationCenter.defaultCenter().addObserver(self,
-                                                     selector:#selector(reloadData) ,
-                                                     name: Constants.dataDownloadedNotification,
-                                                     object: nil)
-    DataManager.downloadData()
+    refreshControl.backgroundColor = UIColor.whiteColor()
+    refreshControl.tintColor = UIColor.redColor()
+    refreshControl.addTarget(self, action: #selector(downloadData), forControlEvents: .ValueChanged)
+    tableView.addSubview(refreshControl)
+    
+    setupReachability()
+    
+    labelNoBurgers.hidden = true
+    let arr = Burger.MR_findAll() as! [Burger]
+    if arr.count > 0 {
+      reloadData()
+    }
+    downloadData()
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -40,17 +51,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func reloadData() {
     dispatch_async(dispatch_get_main_queue(),{
       self.hideActivityIndicator()
+      self.refreshControl.endRefreshing()
+      
       let allBurgers = Burger.MR_findAll() as! [Burger]
       print(allBurgers.count)
       self.nonPromotedBurgers = allBurgers.filter({ (burger) -> Bool in
         return burger.promoted == NSNumber(bool: false)
       })
+      self.nonPromotedBurgers = self.nonPromotedBurgers.sort{ return $0.id?.intValue < $1.id?.intValue}
+      
       self.promotedBurgers = allBurgers.filter({ (burger) -> Bool in
         return burger.promoted == NSNumber(bool: true)
       })
+       self.promotedBurgers = self.promotedBurgers.sort{ return $0.id?.intValue < $1.id?.intValue}
+      
+      
       self.setupScrollView()
       self.tableView.reloadData()
     })
+  }
+  
+  func downloadData() {
+    
+    DataManager.downloadData { (success, message) in
+      if !success {
+        let controller = UIAlertController(title: message, message: "Please try again later", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        controller.addAction(action)
+        self.presentViewController(controller, animated: true, completion: nil)
+        self.refreshControl.endRefreshing()
+        self.activityIndicator.hidden = true
+        if Burger.MR_findAll().count == 0 {
+          self.labelNoBurgers.hidden = false
+        }
+      } else {
+        self.reloadData()
+      }
+    }
+  }
+  
+  func setupReachability() {
+    do {
+      reachability = try Reachability.reachabilityForInternetConnection()
+    } catch {
+      print("Reachability has encountered an error")
+    }
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(downloadData), name: Constants.Notifications.ReachabilityChangedNotification, object: nil)
+    do {
+      try reachability.startNotifier()
+    } catch {
+      print("could not start reachability notifier")
+    }
+    
   }
   
   func presentActivityIndicator(hidingBackground hidingBackround: Bool = true) {

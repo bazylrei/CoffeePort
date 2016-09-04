@@ -12,15 +12,20 @@ import MagicalRecord
 
 class BurgerAPI: NSObject {
   
-  class func getBurgersRequest(completion: (result: [AnyObject]) -> Void) {
+  class func getBurgersRequest(completion: (result: [AnyObject], error: String?) -> Void) {
     Alamofire.request(.GET, Constants.baseURL + "/burgers/", parameters: ["foo": "bar"])
       .responseJSON { response in
-        
-        guard let JSON = response.result.value else { return }
-        
-        let burgers = JSON.objectForKey("burgers")
-        if let burgers = burgers {
-          completion(result: burgers as! [AnyObject])
+        switch response.result {
+        case .Success:
+          guard let JSON = response.result.value else { return }
+          
+          let burgers = JSON.objectForKey("burgers")
+          if let burgers = burgers {
+            completion(result: burgers as! [AnyObject], error: nil)
+          }
+          break
+        case .Failure:
+          completion(result: [], error: "something went wrong")
         }
     }
   }

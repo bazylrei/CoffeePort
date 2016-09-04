@@ -20,6 +20,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No burgers to display. Please try again later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-Eb-1mn">
+                                <rect key="frame" x="189" y="237" width="222" height="126"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="126" id="94g-O6-0m5"/>
+                                    <constraint firstAttribute="width" constant="222" id="O4F-YI-vL2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="187-EF-ncI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
                                 <constraints>
@@ -108,11 +118,14 @@
                             <constraint firstItem="187-EF-ncI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="Jw3-un-rWS"/>
                             <constraint firstItem="FRg-Hm-CBK" firstAttribute="top" secondItem="187-EF-ncI" secondAttribute="bottom" constant="-2" id="Qyl-Fr-SDh"/>
                             <constraint firstItem="187-EF-ncI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="UC8-Ud-aML"/>
+                            <constraint firstItem="c0A-Eb-1mn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aN9-Nh-MaF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="187-EF-ncI" secondAttribute="trailing" constant="-20" id="b8c-Bf-ODE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FRg-Hm-CBK" secondAttribute="bottom" id="nA0-H6-kh2"/>
+                            <constraint firstItem="c0A-Eb-1mn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w7x-jM-otH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="labelNoBurgers" destination="c0A-Eb-1mn" id="eju-9z-6FG"/>
                         <outlet property="scrollView" destination="187-EF-ncI" id="D3r-cI-INO"/>
                         <outlet property="tableView" destination="FRg-Hm-CBK" id="Zdz-vx-DWy"/>
                     </connections>
