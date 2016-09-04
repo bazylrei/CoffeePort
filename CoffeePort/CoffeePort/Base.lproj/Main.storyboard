@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="187-EF-ncI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="fXC-cI-Odp"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                 </variation>
                             </scrollView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FRg-Hm-CBK">
-                                <rect key="frame" x="0.0" y="148" width="600" height="452"/>
+                                <rect key="frame" x="0.0" y="238" width="600" height="362"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BurgerCell" rowHeight="100" id="Ujp-A3-8XV" customClass="NonPromotedBurgerCell" customModule="CoffeePort" customModuleProvider="target">
@@ -105,7 +105,7 @@
                             <constraint firstItem="FRg-Hm-CBK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="G4i-Gu-P0L"/>
                             <constraint firstItem="187-EF-ncI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Ib0-aK-bVz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FRg-Hm-CBK" secondAttribute="trailing" constant="-20" id="J9E-et-wbc"/>
-                            <constraint firstItem="187-EF-ncI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="Jw3-un-rWS"/>
+                            <constraint firstItem="187-EF-ncI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="Jw3-un-rWS"/>
                             <constraint firstItem="FRg-Hm-CBK" firstAttribute="top" secondItem="187-EF-ncI" secondAttribute="bottom" constant="-2" id="Qyl-Fr-SDh"/>
                             <constraint firstItem="187-EF-ncI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="UC8-Ud-aML"/>
                             <constraint firstAttribute="trailingMargin" secondItem="187-EF-ncI" secondAttribute="trailing" constant="-20" id="b8c-Bf-ODE"/>

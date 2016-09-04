@@ -40,6 +40,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     dispatch_async(dispatch_get_main_queue(),{
       self.hideActivityIndicator()
       self.nonPromotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(bool: false))) as! [Burger]!
+      self.promotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(bool: true))) as! [Burger]!
+      self.setupScrollView()
       self.tableView.reloadData()
     })
   }
@@ -68,8 +70,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     self.activityIndicator.removeFromSuperview()
   }
+ 
+  func setupScrollView() {
+    scrollView.pagingEnabled = true
+    scrollView.alwaysBounceVertical = false
+    for i in 0..<nonPromotedBurgers.count {
+      let xOrigin = CGFloat(i) * scrollView.frame.size.width
+      var frame = self.scrollView.bounds
+      frame.origin.x = xOrigin
+      let burger = nonPromotedBurgers[i]
+      let allViewsInXibArray = NSBundle.mainBundle().loadNibNamed("PromotedBurgerView", owner: self, options: nil)
+      let burgerView = allViewsInXibArray.first as! PromotedBurgerView
+      burgerView.frame = frame
+      burgerView.setupView(burger)
+      scrollView.addSubview(burgerView)
+    }
+    
+    let width = scrollView.frame.size.width * CGFloat(nonPromotedBurgers.count)
+    let height = scrollView.frame.size.height
+    scrollView.contentSize = CGSizeMake(width, height)
+    
+  }
   
 }
+
 
 // MARK: UITableViewDataSource
 
