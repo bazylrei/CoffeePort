@@ -20,6 +20,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   var activityIndicator: DGActivityIndicatorView!
   let refreshControl =  UIRefreshControl()
   var reachability: Reachability!
+  
+  // MARK: Lifecycle methods
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -47,6 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     super.viewDidDisappear(animated)
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
+  //MARK: Data loading
   
   func reloadData() {
     dispatch_async(dispatch_get_main_queue(),{
@@ -163,21 +167,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 extension ViewController {
   func didBuyBurger(burger: Burger!) {
-    presentActivityIndicator(hidingBackground: false)
-    BurgerAPI.postBurgerRequest(burger.id!, price: burger.bitcoin!) { (result) in
-      self.activityIndicator.stopAnimating()
-      self.activityIndicator.removeFromSuperview()
-      let alert = UIAlertController(title: burger.name!,
-                                    message: result as String,
-                                    preferredStyle: .Alert)
-      let closeAction = UIAlertAction(title: "Ok",
-                                      style: .Cancel,
-                                      handler: nil)
-      alert.addAction(closeAction)
-      self.presentViewController(alert, animated: true, completion: nil)
-      
+    if reachability.isReachable() {
+      presentActivityIndicator(hidingBackground: false)
+      DataManager.postBurgerRequest(burger.id!, price: burger.bitcoin!) { (result, error) in
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.removeFromSuperview()
+        let alert = UIAlertController(title: burger.name!,
+                                      message: result as String,
+                                      preferredStyle: .Alert)
+        let closeAction = UIAlertAction(title: "Ok",
+                                        style: .Cancel,
+                                        handler: nil)
+        alert.addAction(closeAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+      }
     }
-    
   }
   
   func didTapBurgerCell(burger: Burger!) {
