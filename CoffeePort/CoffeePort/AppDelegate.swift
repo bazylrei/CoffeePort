@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     MagicalRecord.setupCoreDataStackWithStoreNamed("coffeePort.sqlite")
     DataManager.downloadData()
@@ -24,6 +23,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(application: UIApplication) {
     MagicalRecord.cleanUp()
   }
-  
 }
 

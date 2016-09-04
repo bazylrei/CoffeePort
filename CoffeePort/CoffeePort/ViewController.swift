@@ -9,7 +9,7 @@
 import UIKit
 import DGActivityIndicatorView
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BurgerCellDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var scrollView: UIScrollView!
@@ -47,23 +47,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       self.promotedBurgers = allBurgers.filter({ (burger) -> Bool in
         return burger.promoted == NSNumber(bool: true)
       })
-      
-//      self.nonPromotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(int: 0))) as! [Burger]!
-//      self.promotedBurgers = Burger.MR_findAllWithPredicate(NSPredicate(format: "promoted = %@", NSNumber(int: 1))) as! [Burger]!
       self.setupScrollView()
       self.tableView.reloadData()
     })
   }
   
-  func presentActivityIndicator() {
-    tableView.hidden = true
-    tableView.alpha = 0.0
-    
-    scrollView.hidden = true
-    scrollView.alpha = 0.0
+  func presentActivityIndicator(hidingBackground hidingBackround: Bool = true) {
+    if hidingBackround == true {
+      tableView.hidden = true
+      tableView.alpha = 0.0
+      
+      scrollView.hidden = true
+      scrollView.alpha = 0.0
+    }
     
     activityIndicator = DGActivityIndicatorView(type: .LineScalePulseOut, tintColor: UIColor.redColor())
-    activityIndicator.frame = CGRectMake(0, 0, 50, 50)
+    activityIndicator.frame = CGRectMake(0,
+                                         0,
+                                         self.view.frame.size.width,
+                                         self.view.frame.size.height)
     activityIndicator.center = self.view.center
     self.view.addSubview(activityIndicator)
     activityIndicator.startAnimating()
@@ -79,7 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     self.activityIndicator.removeFromSuperview()
   }
- 
+  
   func setupScrollView() {
     scrollView.pagingEnabled = true
     scrollView.alwaysBounceVertical = false
@@ -92,6 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       let burgerView = allViewsInXibArray.first as! PromotedBurgerView
       burgerView.frame = frame
       burgerView.setupView(burger)
+      burgerView.delegate = self
       scrollView.addSubview(burgerView)
     }
     
@@ -103,6 +106,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
 }
 
+// MARK: BurgerCellDelegate
+
+extension ViewController {
+  func didBuyBurger(burger: Burger!) {
+    presentActivityIndicator(hidingBackground: false)
+    BurgerAPI.postBurgerRequest(burger.id!, price: burger.bitcoin!) { (result) in
+      self.activityIndicator.stopAnimating()
+      self.activityIndicator.removeFromSuperview()
+      let alert = UIAlertController(title: burger.name!,
+                                    message: result as String,
+                                    preferredStyle: .Alert)
+      let closeAction = UIAlertAction(title: "Ok",
+                                      style: .Cancel,
+                                      handler: nil)
+      alert.addAction(closeAction)
+      self.presentViewController(alert, animated: true, completion: nil)
+      
+    }
+    
+  }
+  
+  func didTapBurgerCell(burger: Burger!) {
+    let note = burger.notes
+    let alert = UIAlertController(title: "Notes", message: note, preferredStyle: .Alert)
+    let closeAction = UIAlertAction(title: "Close", style: .Cancel, handler: nil)
+    alert.addAction(closeAction)
+    self.presentViewController(alert, animated: true) {
+    }
+  }
+}
 
 // MARK: UITableViewDataSource
 
@@ -115,6 +148,7 @@ extension ViewController {
     let cell = tableView.dequeueReusableCellWithIdentifier(Constants.burgerCellIdentifier, forIndexPath: indexPath) as! NonPromotedBurgerCell
     cell.setupCell(nonPromotedBurgers[indexPath.row])
     cell.backgroundColor = UIColor.lightTextColor()//colors[indexPath.row % 2]
+    cell.delegate = self
     return cell
   }
   
@@ -128,12 +162,7 @@ extension ViewController {
 extension ViewController {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    let note = nonPromotedBurgers[indexPath.row].notes
-    let alert = UIAlertController(title: "Notes", message: note, preferredStyle: .Alert)
-    let closeAction = UIAlertAction(title: "Close", style: .Cancel, handler: nil)
-    alert.addAction(closeAction)
-    self.presentViewController(alert, animated: true) {
-      
-    }
+    let burger = self.nonPromotedBurgers[indexPath.row]
+    self.didTapBurgerCell(burger)
   }
 }

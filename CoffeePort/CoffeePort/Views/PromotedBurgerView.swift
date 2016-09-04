@@ -10,28 +10,46 @@ import UIKit
 
 @IBDesignable
 
-class PromotedBurgerView: UIView {
+class PromotedBurgerView: UIView, BurgerCellProtocol {
 
-  @IBOutlet weak var imageView: UIImageView!
-  @IBOutlet weak var burgerName: UILabel!
-  @IBOutlet weak var labelVegetarianIndicator: UILabel!
+  @IBOutlet weak var imageViewBurger: UIImageView!
+  @IBOutlet weak var labelBurgerName: UILabel!
+  @IBOutlet weak var labelVegetarian: UILabel!
+  @IBOutlet weak var buttonBuy: UIButton!
+  var delegate: BurgerCellDelegate!
   var burger: Burger?
   
   func setupView(burger: Burger) {
     self.burger = burger
+    
     if let image = burger.image {
       let imageURL = NSURL(string: Constants.baseURL + image)
-      imageView.sd_setImageWithURL(imageURL)
+      imageViewBurger.sd_setImageWithURL(imageURL)
     }
-    burgerName.text = burger.name
+    labelBurgerName.text = burger.name
     
-    labelVegetarianIndicator.hidden = burger.vegetarian == NSNumber(bool: false)
-    labelVegetarianIndicator.textColor = Constants.Colors.vegetarianGreen
-    labelVegetarianIndicator.layer.borderColor = Constants.Colors.vegetarianGreen.CGColor
-    labelVegetarianIndicator.layer.borderWidth = 3.0
-    labelVegetarianIndicator.layer.cornerRadius = labelVegetarianIndicator.frame.size.height / 2.0
+    labelVegetarian.hidden = burger.vegetarian == NSNumber(bool: false)
+    labelVegetarian.textColor = Constants.Colors.vegetarianGreen
+    labelVegetarian.layer.borderColor = Constants.Colors.vegetarianGreen.CGColor
+    labelVegetarian.layer.borderWidth = 3.0
+    labelVegetarian.layer.cornerRadius = labelVegetarian.frame.size.height / 2.0
     
-    
+    if let bitcoin = burger.bitcoin {
+      buttonBuy.setTitle("฿" + String(bitcoin), forState: .Normal)
+    }
+    buttonBuy.addTarget(self, action: #selector(didTapBuyButton), forControlEvents: .TouchUpInside)
+    buttonBuy.setuproundedCorneredButton()
+  
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+    self.addGestureRecognizer(tapGestureRecognizer)
+  }
+  
+  func didTapBuyButton() {
+    delegate.didBuyBurger(burger)
+  }
+  
+  func didTapView() {
+    delegate.didTapBurgerCell(burger)
   }
   
 }

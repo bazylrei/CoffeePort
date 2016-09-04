@@ -10,13 +10,14 @@ import UIKit
 import SDWebImage
 import DGActivityIndicatorView
 
-class NonPromotedBurgerCell: UITableViewCell {
+class NonPromotedBurgerCell: UITableViewCell, BurgerCellProtocol {
   
-  @IBOutlet weak var thumbnail: UIImageView!
+  @IBOutlet weak var imageViewBurger: UIImageView!
   @IBOutlet weak var labelBurgerName: UILabel!
   @IBOutlet weak var labelVegetarian: UILabel!
   @IBOutlet weak var buttonBuy: UIButton!
   var burger: Burger! = nil
+  var delegate: BurgerCellDelegate!
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
@@ -28,7 +29,7 @@ class NonPromotedBurgerCell: UITableViewCell {
     self.burger = burger
     if let image = burger.image {
       let imageURL = NSURL(string: Constants.baseURL + image)
-      thumbnail.sd_setImageWithURL(imageURL)
+      imageViewBurger.sd_setImageWithURL(imageURL)
     }
     labelBurgerName.text = burger.name
     
@@ -42,38 +43,11 @@ class NonPromotedBurgerCell: UITableViewCell {
       buttonBuy.setTitle("฿" + String(bitcoin), forState: .Normal)
     }
     buttonBuy.addTarget(self, action: #selector(didTapBuyButton), forControlEvents: .TouchUpInside)
-    self.drawButton()
-  }
-  
-  func drawButton() {
-    var token: dispatch_once_t = 0
-    dispatch_once(&token) {
-      self.buttonBuy.backgroundColor = Constants.Colors.vegetarianGreen
-      self.buttonBuy.layer.cornerRadius = 4.0
-      self.buttonBuy.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-      
-    }
+    buttonBuy.setuproundedCorneredButton()
   }
   
   func didTapBuyButton() {
-    guard let viewController = self.getPresentingViewController() else { return }
-    
-    let activityIndicator = DGActivityIndicatorView(type: .LineScalePulseOut, tintColor: UIColor.redColor()) // (type: .LineScalePulseOut,
-    activityIndicator.frame = CGRectMake(0, 0, viewController.view.frame.size.width, viewController.view.frame.size.height)
-    activityIndicator.center = viewController.view.center
-    viewController.view.addSubview(activityIndicator)
-    activityIndicator.startAnimating()
-    
-    BurgerAPI.postBurgerRequest(burger.id!, price: burger.bitcoin!) { (result) in
-      activityIndicator.stopAnimating()
-      activityIndicator.removeFromSuperview()
-      let alert = UIAlertController(title: self.burger.name!, message: result as String, preferredStyle: .Alert)
-      let closeAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-      alert.addAction(closeAction)
-      
-      viewController.presentViewController(alert, animated: true, completion: nil)
-      
-    }
+      delegate.didBuyBurger(burger)
   }
   
   func getPresentingViewController() -> UIViewController? {
