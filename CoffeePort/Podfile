@@ -6,6 +6,7 @@ target 'CoffeePort' do
     pod 'MagicalRecord', '~> 2.3.0'
     pod 'SDWebImage'
     pod 'DGActivityIndicatorView'
+    pod 'ReachabilitySwift'
 use_frameworks!
 
 # Pods for CoffeePort
