@@ -52,28 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
   //MARK: Data loading
   
-  func reloadData() {
-    dispatch_async(dispatch_get_main_queue(),{
-      self.hideActivityIndicator()
-      self.refreshControl.endRefreshing()
-      
-      let allBurgers = Burger.MR_findAll() as! [Burger]
-      print(allBurgers.count)
-      self.nonPromotedBurgers = allBurgers.filter({ (burger) -> Bool in
-        return burger.promoted == NSNumber(bool: false)
-      })
-      self.nonPromotedBurgers = self.nonPromotedBurgers.sort{ return $0.id?.intValue < $1.id?.intValue}
-      
-      self.promotedBurgers = allBurgers.filter({ (burger) -> Bool in
-        return burger.promoted == NSNumber(bool: true)
-      })
-       self.promotedBurgers = self.promotedBurgers.sort{ return $0.id?.intValue < $1.id?.intValue}
-      
-      
-      self.setupScrollView()
-      self.tableView.reloadData()
-    })
-  }
+  il
   
   func downloadData() {
     
