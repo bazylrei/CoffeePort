@@ -28,7 +28,7 @@
                         <constraint firstAttribute="width" secondItem="14W-ts-8SV" secondAttribute="height" multiplier="1:1" id="uVq-eh-1lg"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-ar-dfJ">

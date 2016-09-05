@@ -1,0 +1,4 @@
+{
+    latency = 4;
+    message = "Order placed.";
+}

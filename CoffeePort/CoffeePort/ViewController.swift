@@ -78,19 +78,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func downloadData() {
     
     DataManager.downloadData { (success, message) in
-      if !success {
-        let controller = UIAlertController(title: message, message: "Please try again later", preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-        controller.addAction(action)
-        self.presentViewController(controller, animated: true, completion: nil)
-        self.refreshControl.endRefreshing()
-        self.activityIndicator.hidden = true
-        if Burger.MR_findAll().count == 0 {
-          self.labelNoBurgers.hidden = false
+      dispatch_async(dispatch_get_main_queue(),{
+        if !success {
+          let controller = UIAlertController(title: message, message: "Please try again later", preferredStyle: .Alert)
+          let action = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+          controller.addAction(action)
+          self.presentViewController(controller, animated: true, completion: nil)
+          self.refreshControl.endRefreshing()
+          self.activityIndicator.removeFromSuperview()
+          if Burger.MR_findAll()!.count == 0 {
+            self.labelNoBurgers.hidden = false
+          }
+        } else {
+          self.reloadData()
         }
-      } else {
-        self.reloadData()
-      }
+      })
     }
   }
   

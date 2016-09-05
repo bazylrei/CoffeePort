@@ -12,8 +12,8 @@ import MagicalRecord
 
 class BurgerAPI: NSObject {
   
-  class func getBurgersRequest(completion: (result: [AnyObject], error: String?) -> Void) {
-    Alamofire.request(.GET, Constants.baseURL + "/burgers/", parameters: ["foo": "bar"])
+    class func getBurgersRequest(completion: (result: [AnyObject], error: String?) -> Void) {
+    Alamofire.request(.GET, Constants.baseURL + "/burgers/")
       .responseJSON { response in
         switch response.result {
         case .Success:
@@ -25,7 +25,7 @@ class BurgerAPI: NSObject {
           }
           break
         case .Failure:
-          completion(result: [], error: "something went wrong")
+            completion(result: [], error: "something went wrong")
         }
     }
   }

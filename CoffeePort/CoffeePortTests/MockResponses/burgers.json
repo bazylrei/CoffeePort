@@ -1,0 +1,23 @@
+{
+    "latency": 3,
+    "burgers": [
+                {
+                "id": 1,
+                "bitcoin": 599,
+                "image": "/static/burgers/seitan.jpg",
+                "name": "Seitan Burger",
+                "promoted": false,
+                "notes": "Made from seitan in the Cetus system, imported to Coffee Port by the Intergalactic Vegan Association.",
+                "vegetarian": true
+                },
+                {
+                "id": 2,
+                "bitcoin": 750,
+                "image": "/static/burgers/diner.jpg",
+                "name": "Diner Burger",
+                "promoted": true,
+                "notes": "We periodically send spies to Earth to bring this delicacy back to Coffee Port.",
+                "vegetarian": false
+                }
+                ]
+}

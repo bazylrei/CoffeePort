@@ -22,12 +22,16 @@ class DataManager: NSObject {
           completionBlock(success: false, message: "Something went wrong")
         }
         MagicalRecord.saveWithBlock({ (localContext) in
-          for burger in Burger.MR_findAll() {
-            burger.MR_deleteInContext(localContext)
+          for burger in Burger.MR_findAll()! {
+            burger.MR_deleteEntityInContext(localContext)
           }
         }, completion: { (booleanResult, error) in
             MagicalRecord.saveWithBlock({ (localContext) in
-              Burger.MR_importFromArray(result, inContext: localContext)
+                for burger in result {
+                    Burger.MR_importFromObject(burger, inContext: localContext)
+                }
+                
+//                Burger.MR_importFromArray(result, inContext: localContext)
             }, completion: { (s, error) in
               completionBlock(success: true, message:"Success")
             })

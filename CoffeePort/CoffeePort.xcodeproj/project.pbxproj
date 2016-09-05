@@ -20,12 +20,16 @@
 		21F264791D7C418E00AC0CD6 /* BuyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F264781D7C418E00AC0CD6 /* BuyButton.swift */; };
 		61B60ED4A4EE962364193D19 /* Pods_CoffeePort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464A36D47AD1FE3987D4706C /* Pods_CoffeePort.framework */; };
 		D7B76DCD4FB3E62E240DF4C6 /* Pods_CoffeePortTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A3DD5C4FE9371D61A5DB2A /* Pods_CoffeePortTests.framework */; };
+		F8AA3F2F1D7DF0DF002463C5 /* BurgerAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA3F2E1D7DF0DF002463C5 /* BurgerAPITests.swift */; };
+		F8AA3F311D7DF5B0002463C5 /* postedBurger.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AA3F301D7DF5B0002463C5 /* postedBurger.json */; };
 		F8B384131D79D9340057294C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B384121D79D9340057294C /* AppDelegate.swift */; };
 		F8B384151D79D9340057294C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B384141D79D9340057294C /* ViewController.swift */; };
 		F8B384181D79D9340057294C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B384161D79D9340057294C /* Main.storyboard */; };
 		F8B3841D1D79D9340057294C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8B3841C1D79D9340057294C /* Assets.xcassets */; };
 		F8B384201D79D9340057294C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B3841E1D79D9340057294C /* LaunchScreen.storyboard */; };
 		F8B3842B1D79D9340057294C /* CoffeePortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B3842A1D79D9340057294C /* CoffeePortTests.swift */; };
+		F8EC70C51D7DCA7D00F4857C /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC70C41D7DCA7D00F4857C /* ViewControllerTest.swift */; };
+		F8EC70C81D7DCDB100F4857C /* burgers.json in Resources */ = {isa = PBXBuildFile; fileRef = F8EC70C71D7DCDB100F4857C /* burgers.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,8 @@
 		61A569E31F5851078DC371AA /* Pods-CoffeePort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePort/Pods-CoffeePort.debug.xcconfig"; sourceTree = "<group>"; };
 		ECF3E74BBA0869B39D293154 /* Pods-CoffeePortTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeePortTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeePortTests/Pods-CoffeePortTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6A3DD5C4FE9371D61A5DB2A /* Pods_CoffeePortTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeePortTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8AA3F2E1D7DF0DF002463C5 /* BurgerAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurgerAPITests.swift; sourceTree = "<group>"; };
+		F8AA3F301D7DF5B0002463C5 /* postedBurger.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postedBurger.json; sourceTree = "<group>"; };
 		F8B3840F1D79D9340057294C /* CoffeePort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeePort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B384121D79D9340057294C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8B384141D79D9340057294C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +73,8 @@
 		F8B384261D79D9340057294C /* CoffeePortTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeePortTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B3842A1D79D9340057294C /* CoffeePortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeePortTests.swift; sourceTree = "<group>"; };
 		F8B3842C1D79D9340057294C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8EC70C41D7DCA7D00F4857C /* ViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
+		F8EC70C71D7DCDB100F4857C /* burgers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = burgers.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,10 +205,22 @@
 		F8B384291D79D9340057294C /* CoffeePortTests */ = {
 			isa = PBXGroup;
 			children = (
+				F8EC70C61D7DCD8D00F4857C /* MockResponses */,
 				F8B3842A1D79D9340057294C /* CoffeePortTests.swift */,
 				F8B3842C1D79D9340057294C /* Info.plist */,
+				F8EC70C41D7DCA7D00F4857C /* ViewControllerTest.swift */,
+				F8AA3F2E1D7DF0DF002463C5 /* BurgerAPITests.swift */,
 			);
 			path = CoffeePortTests;
+			sourceTree = "<group>";
+		};
+		F8EC70C61D7DCD8D00F4857C /* MockResponses */ = {
+			isa = PBXGroup;
+			children = (
+				F8EC70C71D7DCDB100F4857C /* burgers.json */,
+				F8AA3F301D7DF5B0002463C5 /* postedBurger.json */,
+			);
+			path = MockResponses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +321,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8EC70C81D7DCDB100F4857C /* burgers.json in Resources */,
+				F8AA3F311D7DF5B0002463C5 /* postedBurger.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +445,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8EC70C51D7DCA7D00F4857C /* ViewControllerTest.swift in Sources */,
 				F8B3842B1D79D9340057294C /* CoffeePortTests.swift in Sources */,
+				F8AA3F2F1D7DF0DF002463C5 /* BurgerAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
